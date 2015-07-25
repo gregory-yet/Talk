@@ -1,8 +1,8 @@
 /*
 
 	* @author 			Grégory
-	* @description		Code JavaScript permettant de générer un lien de chat via tlk.io pour discuter plus rapidement sans s'ajouter sur Skype
-	* @copyright 		2015 Aucune modification n'est autorisée sans mon accord
+	* @description			Code JavaScript permettant de générer un lien de chat via tlk.io pour discuter plus rapidement sans s'ajouter sur Skype
+	* @copyright 			2015 Aucune modification n'est autorisée sans mon accord
 	* @website 			http://wayz.fr/
 	* @version 			1.0
 
