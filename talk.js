@@ -10,12 +10,15 @@
 
 
 var talk = {
-	pathname: location.pathname.split('/')[1],
+	location: {
+		pathname: location.pathname.split('/'),
+		hash: location.hash
+	},
 	init: function(){
-		if(pathname == "conversations"){
+		if(this.location.pathname[1] == "conversations" && this.location.pathname[2] == "add" && this.location.hash == "#talk"){
 			$.getScript("https://gitcdn.xyz/repo/blueimp/JavaScript-MD5/master/js/md5.js");
 		}
-		if(pathname == "members"){
+		if(this.location.pathname[1] == "members"){
 			var username = $('.username').eq(0).text().trim();
 			$('.infoBlock').eq(1).find('.pairsJustified').append(
 				'<dl>' +
@@ -23,7 +26,7 @@ var talk = {
 					'<dd><a href="/conversations/add?to='+username+'" class="OverlayTrigger">'+username+'</a></dd>' +
 				'</dl>');
 		}
-		talk.listener();
+		this.listener();
 
 	},
 	listener: function(){
