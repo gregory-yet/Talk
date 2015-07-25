@@ -10,18 +10,28 @@
 
 
 var talk = {
+	pathname: location.pathname.split('/')[1],
 	init: function(){
+		if(pathname == "conversations"){
+			$.getScript("https://gitcdn.xyz/repo/blueimp/JavaScript-MD5/master/js/md5.js");
+		}
+		if(pathname == "members"){
+			var username = $('.username').eq(0).text().trim();
+			$('.infoBlock').eq(1).find('.pairsJustified').append(
+				'<dl>' +
+					'<dt>Talk:</dt>' +
+					'<dd><a href="/conversations/add?to='+username+'" class="OverlayTrigger">'+username+'</a></dd>' +
+				'</dl>');
+		}
+		talk.listener();
 
-		$.getScript("https://gitcdn.xyz/repo/blueimp/JavaScript-MD5/master/js/md5.js"); 
-
-		talk.api();
-
-	}
-	api: function(){
+	},
+	listener: function(){
 
 		$(document).on('DOMNodeInserted', function(e) {
+			var card = $(e.target);
 			if (e.target.className == 'contenuMemberCard') {
-				$(e.target).find('.userLinks').children().eq(1).after('<a href="'+$(e.target).find('.userLinks').children().eq(1).attr('href')+'">Talk</a>');
+				card.find('.userLinks').children().eq(1).after('<a href="/conversations/add?to='+card.find('.username').eq(0).text().trim()+'">Talk</a>');
 			}
 		});
 
