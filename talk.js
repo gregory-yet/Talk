@@ -19,7 +19,7 @@ var talk = {
 			$.getScript("https://gitcdn.xyz/repo/blueimp/JavaScript-MD5/master/js/md5.js", function(){
 				talk.message();
 			});
-			this.isLink();
+			this.link();
 		}
 		if(this.location.pathname[1] == "members"){
 			var username = $('.username').eq(0).text().trim();
@@ -55,6 +55,19 @@ var talk = {
 		else {
 			console.error("Talk.js - md5.js manquant");
 		}
+	},
+	link: function(){
+		var link = $('.messageContent .messageText').find('a');
+		for(var i in link){
+			if(parseUrl(link.eq(i).attr('href')).hostname == "tlk.io"){
+				alert('link found');
+			}
+		}
+	},
+	parseUrl: function(url){
+		var a = document.createElement('a');
+		a.href = url;
+		return a;
 	}
 };
 
