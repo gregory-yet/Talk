@@ -12,7 +12,7 @@
 var talk = {
 	init: function(){
 
-		$.getScript("https://gitcdn.xyz/repo/blueimp/JavaScript-MD5/master/js/md5.js");
+		$.getScript("https://gitcdn.xyz/repo/blueimp/JavaScript-MD5/master/js/md5.js"); 
 
 		talk.api();
 
