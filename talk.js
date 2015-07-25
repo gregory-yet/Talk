@@ -19,9 +19,11 @@ var talk = {
 			$.getScript("https://gitcdn.xyz/repo/blueimp/JavaScript-MD5/master/js/md5.js", function(){
 				talk.message();
 			});
+		}
+		else if(this.location.pathname[1] == "conversations"){
 			this.link();
 		}
-		if(this.location.pathname[1] == "members"){
+		else if(this.location.pathname[1] == "members"){
 			var username = $('.username').eq(0).text().trim();
 			$('.infoBlock').eq(0).find('.pairsJustified').append(
 				'<dl>' +
@@ -59,8 +61,9 @@ var talk = {
 	link: function(){
 		var link = $('.messageContent .messageText').find('a');
 		for(var i in link){
-			if(parseUrl(link.eq(i).attr('href')).hostname == "tlk.io"){
-				alert('link found');
+			if(this.parseUrl(link.eq(i).attr('href')).hostname == "tlk.io"){
+				$('.messageContent .messageText').parent().css('height', '600px');
+				$('.messageContent .messageText').append('<div style="margin-bottom: 60px;"></div><div id="tlkio" data-channel="'+this.parseUrl(link.eq(i).attr('href')).pathname.substr(1)+'" style="width:100%;height:100%;"></div><script async src="https://tlk.io/embed.js" type="text/javascript"></script>');
 			}
 		}
 	},
