@@ -46,7 +46,10 @@ var talk = {
 	},
 	message: function(){
 		$('#ctrl_title').val('Rejoins moi sur une shoutbox privée !');
-		$('iframe.redactor_textCtrl').contents().find('body').html("Salut !<br><br>Je t'invite à me rejoindre sur une shoutbox privée pour que l'on puisse parler en toute sécurité via <a href='http://tlk.io/"+this.generate()+"'>ce lien</a><br><br>À bientôt ;)");
+		$('iframe.redactor_textCtrl').contents().find('body').html("Salut !<br><br>" +
+			"Je t'invite à me rejoindre sur une shoutbox privée pour que l'on puisse parler en toute sécurité via " +
+			"<a href='http://tlk.io/"+this.generate()+"'>ce lien</a><br><br>" +
+			"À bientôt ;)");
 		$('iframe.redactor_textCtrl').contents().find('body').select();
 		$('iframe.redactor_textCtrl').contents().find('body').focus();
 	},
@@ -63,7 +66,7 @@ var talk = {
 		for(var i in link){
 			if(this.parseUrl(link.eq(i).attr('href')).hostname == "tlk.io"){
 				$('.messageContent .messageText').parent().css('height', '600px');
-				$('.messageContent .messageText').append('<div style="margin-bottom: 60px;"></div><div id="tlkio" data-channel="'+this.parseUrl(link.eq(i).attr('href')).pathname.substr(1)+'" style="width:100%;height:100%;"></div><script async src="https://tlk.io/embed.js" type="text/javascript"></script>');
+				$('.messageContent .messageText').append('<div style="margin-bottom: 60px;"></div><div id="tlkio" data-channel="'+this.parseUrl(link.eq(i).attr('href')).pathname.substr(1)+'" style="width:100%;height:400px;"></div><script async src="https://tlk.io/embed.js" type="text/javascript"></script>');
 			}
 		}
 	},
